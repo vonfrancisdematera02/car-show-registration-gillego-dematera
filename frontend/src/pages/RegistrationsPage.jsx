@@ -1,4 +1,5 @@
-﻿import { useCallback, useEffect, useState } from "react";
+﻿
+import { useCallback, useEffect, useState } from "react";
 import { getRegistrations, getSummary } from "../api/registrationsApi";
 import useDebounce from "../hooks/useDebounce";
 
@@ -37,6 +38,8 @@ function RegistrationsPage() {
   }, []);
 
   useEffect(() => {
+    // Intentional API request when the page loads.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     loadSummary();
   }, [loadSummary]);
 
@@ -65,6 +68,8 @@ function RegistrationsPage() {
   }, [debouncedSearch, filters.type, filters.status, page, pageSize]);
 
   useEffect(() => {
+    // Intentional API request when filters or pagination change.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     loadRegistrations();
   }, [loadRegistrations]);
 
@@ -196,4 +201,3 @@ function RegistrationsPage() {
 }
 
 export default RegistrationsPage;
-
